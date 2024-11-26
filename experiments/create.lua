@@ -11,6 +11,14 @@ time = math.floor(socket.gettime() * 1000)
 math.randomseed(time)
 uuid.randomseed(time)
 
+uuid.set_rng(function(n)
+    local t = {}
+    for i = 1, n do
+        t[i] = string.char(math.random(0, 50001))
+    end
+    return table.concat(t)
+end)
+
 local thread_count = 1
 
 -- This function runs after all threads have been created

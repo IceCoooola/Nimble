@@ -8,9 +8,12 @@ CMD = "screen -d -m " + NIMBLE_BIN_PATH
 HAS_LB = LISTEN_IP_ENDPOINT_1 != LISTEN_IP_LOAD_BALANCER # if not the same, we assume 2 endpoints and a load balancer
 
 def setup_main_endorsers():
-    endorser1 = ssh_cmd(SSH_IP_ENDORSER_1, CMD + "/endorser -t " + LISTEN_IP_ENDORSER_1 + " -p " + PORT_ENDORSER_1)
-    endorser2 = ssh_cmd(SSH_IP_ENDORSER_2, CMD + "/endorser -t " + LISTEN_IP_ENDORSER_2 + " -p " + PORT_ENDORSER_2)
-    endorser3 = ssh_cmd(SSH_IP_ENDORSER_3, CMD + "/endorser -t " + LISTEN_IP_ENDORSER_3 + " -p " + PORT_ENDORSER_3)
+    endorser1 = ssh_cmd(SSH_IP_ENDORSER_1, CMD + "/endorser -t " +
+                        LISTEN_IP_ENDORSER_1 + " -p " + PORT_ENDORSER_1)
+    endorser2 = ssh_cmd(SSH_IP_ENDORSER_2, CMD + "/endorser -t " +
+                        LISTEN_IP_ENDORSER_2 + " -p " + PORT_ENDORSER_2)
+    endorser3 = ssh_cmd(SSH_IP_ENDORSER_3, CMD + "/endorser -t " +
+                        LISTEN_IP_ENDORSER_3 + " -p " + PORT_ENDORSER_3 )
 
     print(endorser1)
     os.system(endorser1)
@@ -185,11 +188,11 @@ def ssh_cmd(ip, cmd):
     if LOCAL_RUN:
         return cmd.replace('\'', '')
     else:
-        return "ssh -o StrictHostKeyChecking=no -i " + SSH_KEY_PATH + " " + SSH_USER + "@" + ip + " " + cmd
+        return "ssh -o StrictHostKeyChecking=no -i " + SSH_KEY_PATH + " " + SSH_USER + "@" + ip + " " + '"' + cmd + '"'
 
 def setup_output_folder(ip, out_folder):
     # Create output folder in case it doesn't exist
-    folder_cmd = ssh_cmd(ip, "\'mkdir -p " + out_folder + "\'")
+    folder_cmd = ssh_cmd(ip, "mkdir -p " + out_folder )
 
     print(folder_cmd)
     os.system(folder_cmd)

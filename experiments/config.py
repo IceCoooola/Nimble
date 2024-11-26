@@ -10,38 +10,38 @@ LOCAL_RUN = False # set to True if you want to run all nodes and experiments loc
 #   For example, these could be private IP addresses in a VNET. In many cases, LISTEN_IPs can just the SSH_IPs.
 #   Azure won't let you listen on a public IP though. You need to listen on private IPs.
 
-SSH_IP_ENDORSER_1 = "127.0.0.1"
-LISTEN_IP_ENDORSER_1 = "127.0.0.1"
+SSH_IP_ENDORSER_1 = "endorser1"
+LISTEN_IP_ENDORSER_1 = "33.33.33.5"
 PORT_ENDORSER_1 = "9091"
 
-SSH_IP_ENDORSER_2 = "127.0.0.1"
-LISTEN_IP_ENDORSER_2 = "127.0.0.1"
+SSH_IP_ENDORSER_2 = "endorser2"
+LISTEN_IP_ENDORSER_2 = "33.33.33.6"
 PORT_ENDORSER_2 = "9092"
 
-SSH_IP_ENDORSER_3 = "127.0.0.1"
-LISTEN_IP_ENDORSER_3 = "127.0.0.1"
+SSH_IP_ENDORSER_3 = "endorser3"
+LISTEN_IP_ENDORSER_3 = "33.33.33.7"
 PORT_ENDORSER_3 = "9093"
 
-SSH_IP_COORDINATOR = "127.0.0.1"
-LISTEN_IP_COORDINATOR = "127.0.0.1"
+SSH_IP_COORDINATOR = "coordinator"
+LISTEN_IP_COORDINATOR = "33.33.33.4"
 PORT_COORDINATOR = "8080"
 PORT_COORDINATOR_CTRL = "8090" # control plane
 
-SSH_IP_ENDPOINT_1 = "127.0.0.1"
-LISTEN_IP_ENDPOINT_1 = "127.0.0.1"
-PORT_ENDPOINT_1 = "8082"
+SSH_IP_ENDPOINT_1 = "endpoint1"
+LISTEN_IP_ENDPOINT_1 = "33.33.33.8"
+PORT_ENDPOINT_1 = "8080"
 
-SSH_IP_ENDPOINT_2 = "127.0.0.1"
-LISTEN_IP_ENDPOINT_2 = "127.0.0.1"
-PORT_ENDPOINT_2 = "8082"
+SSH_IP_ENDPOINT_2 = "endpoint2"
+LISTEN_IP_ENDPOINT_2 = "33.33.33.9"
+PORT_ENDPOINT_2 = "8080"
 
-LISTEN_IP_LOAD_BALANCER = "127.0.0.1" # if no load balancer is available just use one endpoint (ENDPOINT_1)
+LISTEN_IP_LOAD_BALANCER = "33.33.33.10" # if no load balancer is available just use one endpoint (ENDPOINT_1)
                                         # and set the LISTEN IP of that endpoint here
 
-PORT_LOAD_BALANCER = "8082"             #if no load balancer is available just use one endpoint (ENDPOINT_1)
+PORT_LOAD_BALANCER = "8080"             #if no load balancer is available just use one endpoint (ENDPOINT_1)
                                         # and set the PORT of that endpoint here
 
-SSH_IP_CLIENT = "127.0.0.1" # IP of the machine that will be running our workload generator.
+SSH_IP_CLIENT = "client" # IP of the machine that will be running our workload generator.
 
 
 # If you are going to be running the reconfiguration experiment, set the backup endorsers
@@ -76,14 +76,14 @@ PORT_SGX_ENDORSER_3 = "9093"
 # wrk2 executable, and the directory where the logs and results should be stored.
 # We assume all of the machines have the same path.
 
-NIMBLE_PATH = "/home/user/nimble"
+NIMBLE_PATH = "/home/cola/Nimble"
 NIMBLE_BIN_PATH = NIMBLE_PATH + "/target/release"
 WRK2_PATH = NIMBLE_PATH + "/experiments/wrk2"
 OUTPUT_FOLDER = NIMBLE_PATH + "/experiments/results"
 
 # Set the SSH user for the machines that we will be connecting to.
-SSH_USER = "user"                       # this is the username in the machine we'll connect to (e.g., user@IP)
-SSH_KEY_PATH = "/home/user/.ssh/id_rsa" # this is the path to private key in the current machine where you'll run this script
+SSH_USER = "cola"                       # this is the username in the machine we'll connect to (e.g., user@IP)
+SSH_KEY_PATH = "~/.ssh/id_rsa" # this is the path to private key in the current machine where you'll run this script
 
 # To use Azure storage, you need to set the STORAGE_ACCOUNT_NAME and STORAGE_MASTER_KEY environment variables
 # with the corresponding values that you get from Azure.
