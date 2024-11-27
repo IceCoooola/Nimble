@@ -1,7 +1,27 @@
 LOCAL_RUN = False # set to True if you want to run all nodes and experiments locally. Else set to False.
                   # If set to True, you can ignore all the IP addresses and SSH stuff below. They won't be used.
                   # You cannot run any of the Azure table experiments locally.
+import json
+# edit: with all the setup in JSON file.
+# set up namenode
+with open("namenode_baseline_output.json", "r") as file:
+  70         vm_output = json.load(file)
+  71         namenode_ip = vm_output.get("publicIpAddress")
+  72
+if not namenode_ip:
+    raise ValueError("Public IP address not found in namenode_output.json")
+ssh_user = "cola"
+ssh_namenode = f"ssh {ssh_user}@{namenode_ip}"
+set_up_node(ssh_namenode)
+with open("datanode_baseline_output.json", "r") as file:
+    vm_output = json.load(file)
+    datanode_ip = vm_output.get("publicIpAddress")
 
+if not datanode_ip:
+    raise ValueError("Public IP address not found in namenode_output.json")
+ssh_datanode = f"ssh {ssh_user}@{datanode_ip}"
+set_up_node(ssh_datanode)
+print("Setup completed.")
 
 # Set the IPs below and make sure that the machine running this script can ssh into those IPs
 
