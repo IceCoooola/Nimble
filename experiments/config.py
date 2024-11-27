@@ -55,6 +55,18 @@ SSH_IP_ENDPOINT_2 = endpoint2_config.get("publicIpAddress", {})
 LISTEN_IP_ENDPOINT_2 = endpoint2_config.get("privateIpAddress", {})
 PORT_ENDPOINT_2 = "8082"
 
+namenode_nimble_config = load_config("./namenode_nimble_output.json")
+
+SSH_IP_NAMENODE_NIMBLE = namenode_nimble_config.get("publicIpAddress", {})
+PRIVATE_IP_NAMENODE_NIMBLE = namenode_nimble_config.get("privateIpAddress", {})
+
+datanode_nimble_config = load_config("./datanode_nimble_output.json")
+
+SSH_IP_DATANODE_NIMBLE = datanode_nimble_config.get("publicIpAddress", {})
+PRIVATE_IP_DATANODE_NIMBLE = datanode_nimble_config.get("privateIpAddress", {})
+
+
+
 loadbalancer_config = load_config("./load_balancer_ip_output.json")
 
 LISTEN_IP_LOAD_BALANCER = loadbalancer_config.get("ipAddress", {})
