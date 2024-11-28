@@ -20,7 +20,7 @@ commands = [
     "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y",  # Install Rust
     "source $HOME/.cargo/env",  # Source Rust environment
     "git clone https://github.com/Microsoft/Nimble",  # Clone Nimble repo
-    "cd Nimble && cargo build --release",  # Build Nimble
+    "export PATH=$HOME/.cargo/bin:$PATH && cd Nimble && cargo build --release", #Build Nimble
 ]
 
 def run_ssh_commands(ip, user, commands):
